@@ -33,20 +33,24 @@ public class Transaction {
     @Column(nullable = false, length = 100)
     private String description;
 
+    // Define o valor da transação com precisão e escala
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
 
     @Column(nullable = false)
     private LocalDate date;
 
+    // Define o tipo de transação como uma enumeração
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TransactionType type;
 
+    // Define a relação Many-to-One com a entidade User e Category
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    // Define a relação Many-to-One com a entidade Category
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
