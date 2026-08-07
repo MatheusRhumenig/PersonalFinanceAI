@@ -28,6 +28,7 @@ public class Category {
     @Column(nullable = false, length = 20)
     private String name;
 
+    // Define o tipo de transação como uma enumeração
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private TransactionType type;
