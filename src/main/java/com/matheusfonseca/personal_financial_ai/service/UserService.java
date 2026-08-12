@@ -20,7 +20,7 @@ public class UserService {
 
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
 
-        if(userRepository.findByEmail(userRequestDTO.email())) {
+        if(userRepository.findOptionalByEmail(userRequestDTO.email()).isPresent()) {
             // Lança uma exceção de negócio se o email já estiver em uso
             throw new BusinessException("Email já está em uso", HttpStatus.CONFLICT);
         }else{
@@ -30,6 +30,7 @@ public class UserService {
         user.setName(userRequestDTO.name());
         user.setEmail(userRequestDTO.email());
         user.setPassword(userRequestDTO.password());
+        user.setCreatedAt(java.time.LocalDateTime.now());
 
         User saved = userRepository.save(user);
         // Retorna um DTO de resposta com os dados do usuário criado
