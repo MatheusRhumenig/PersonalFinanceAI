@@ -8,7 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 // Classe para tratamento global de exceções na aplicação
+@Hidden
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
